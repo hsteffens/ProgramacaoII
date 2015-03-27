@@ -1,4 +1,4 @@
-package br.com.editorTexto;
+package furb.prog.blocoNotas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +20,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
-import br.com.editorTexto.file.File;
+import furb.br.blocoNotas.file.File;
 
+/**
+ * 
+ * @author Helinton e Diogo
+ * @date 22/03/2015
+ *
+ */
 public class Editor extends EditorTexto implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -58,12 +64,22 @@ public class Editor extends EditorTexto implements ActionListener{
 		setSize(700, 500);
 		setTitle("Bloco de notas");        
 
+		carregarInfoTextArea();
+
+		carregarInfoMenu();
+	}
+
+	/**
+	 * Cria e defini comportamentos da textArea do bloco de notas
+	 */
+	private void carregarInfoTextArea() {
 		setTextArea(new JTextArea());
 		getTextArea().addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent event) {
 				char keyCode = event.getKeyChar();
+				//Valida se o codigo ascii se encotra entre os valores validos
 				if (keyCode > 32 && keyCode < 127 ) {
 					setEditado(true);
 				}
@@ -78,7 +94,12 @@ public class Editor extends EditorTexto implements ActionListener{
 			}
 		});
 		add(getTextArea());
+	}
 
+	/**
+	 * Carrega todas as informações e ações referentes ao bloco de notas
+	 */
+	private void carregarInfoMenu() {
 		JMenuBar menu = new JMenuBar();
 		setJMenuBar(menu);
 
@@ -184,7 +205,7 @@ public class Editor extends EditorTexto implements ActionListener{
 
 	private void sobre() {
 		JOptionPane.showMessageDialog(this, "Trabalho de Programação \n\n Curso de Ciências da Computação \n\n Professor: Matheus Carvalho Viana\n"
-		            + " Alunos: Hélinton Pereira Steffens e Diogo Lehner \n\n Trabalho construção Bloco de Notas");
+		            + " Alunos: Hélinton Pereira Steffens e Diogo Lehner");
 	}
 
 	private void fechar() {
@@ -275,7 +296,7 @@ public class Editor extends EditorTexto implements ActionListener{
 
 	private void limpar() {
 		setEditado(false);
-		setArquivo(null);
+		setArquivo(new File());
 		getTextArea().setText("");
 	}
 	

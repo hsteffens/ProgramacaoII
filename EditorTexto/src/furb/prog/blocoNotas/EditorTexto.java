@@ -1,9 +1,15 @@
-package br.com.editorTexto;
+package furb.prog.blocoNotas;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
+/**
+ * 
+ * @author Helinton e Diogo
+ * @date 22/03/2015
+ *
+ */
 public class EditorTexto extends JFrame{
 
 	private static final long serialVersionUID = 1L;
